@@ -1,0 +1,140 @@
+/* Rounded home-page cards, following the visual structure of the WiNES Lab site. */
+.hero {
+  margin: 32px auto 0;
+  padding: 0 28px;
+  background: var(--page);
+}
+
+.hero-grid {
+  max-width: calc(var(--width) - 56px);
+  padding: 58px;
+  background: linear-gradient(135deg, var(--pale), #fff);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 37, 99, .06);
+}
+
+.hero h1 {
+  font-size: clamp(32px, 3.4vw, 40px);
+  white-space: nowrap;
+}
+
+.affiliation {
+  border-radius: 16px;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.affiliation:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 37, 99, .08);
+}
+
+.areas {
+  gap: 18px;
+  border: 0;
+}
+
+.areas article {
+  min-height: 205px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.areas article:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 24px rgba(0, 37, 99, .08);
+}
+
+.contact {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 16px;
+}
+
+.btn { border-radius: 10px; }
+
+.gallery-section {
+  margin: 0 0 72px;
+}
+
+.gallery-section h2 {
+  margin: 0 0 28px;
+  font-size: 38px;
+}
+
+.gallery-window {
+  overflow: hidden;
+  padding: 18px 0;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--pale), #fff);
+  box-shadow: 0 10px 30px rgba(0, 37, 99, .06);
+}
+
+.gallery-track {
+  display: flex;
+  width: max-content;
+  animation: gallery-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.gallery-window:hover .gallery-track {
+  animation-play-state: paused;
+}
+
+.gallery-set {
+  display: flex;
+  flex-shrink: 0;
+  gap: 18px;
+  padding-left: 18px;
+}
+
+.gallery-set img {
+  width: 260px;
+  height: 190px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+@keyframes gallery-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 850px) {
+  .hero { padding: 0 28px; }
+  .hero-grid { padding: 42px 32px; }
+  .hero h1 { white-space: normal; }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    margin-top: 20px;
+    padding: 0 28px;
+  }
+
+  .hero-grid {
+    padding: 32px 22px;
+    border-radius: 16px;
+  }
+
+  .affiliation,
+  .areas article,
+  .contact { border-radius: 14px; }
+
+  .gallery-section h2 { font-size: 32px; }
+  .gallery-window { border-radius: 14px; }
+  .gallery-set img {
+    width: 220px;
+    height: 160px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track { animation-play-state: paused; }
+}
