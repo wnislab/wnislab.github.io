@@ -12,9 +12,10 @@ This repository contains a dependency-free static website hosted with GitHub Pag
 
 ## Pages
 
-- `index.html` — Home page, research areas, contact information, and photo gallery
+- `index.html` — Home page, latest news, research areas, contact information, and photo gallery
 - `team/index.html` — Lab director, students, alumni, and past visitors
 - `publications/index.html` — Publications grouped automatically by year
+- `news/index.html` — Complete news archive grouped automatically by year
 
 ## Project structure
 
@@ -25,11 +26,20 @@ This repository contains a dependency-free static website hosted with GitHub Pag
 │   └── index.html
 ├── publications/
 │   └── index.html
-├── content.js
+├── news/
+│   └── index.html
+├── content/
+│   ├── edit-homepage-here.js
+│   ├── edit-news-here.js
+│   ├── edit-publications-here.js
+│   ├── edit-team-here.js
+│   └── site-settings.js
 ├── design-config.js
 ├── robots.txt
 ├── sitemap.xml
 ├── css/
+│   ├── news.css
+│   ├── publications.css
 │   ├── main.css
 │   └── home.css
 ├── js/
@@ -40,6 +50,7 @@ This repository contains a dependency-free static website hosted with GitHub Pag
         ├── brand/
         ├── gallery/
         ├── profile/
+        ├── research/
         └── team/
 ```
 
@@ -55,19 +66,35 @@ Then visit [http://localhost:8000/](http://localhost:8000/). Stop the server wit
 
 ## Updating content
 
-Most website content is maintained in `content.js`:
+Website content is split into clearly named files inside `content/`:
 
-- Research areas
-- Current students
-- Alumni and past visitors
-- Publications
+- `edit-homepage-here.js` — Homepage text and research areas
+- `edit-news-here.js` — News and research milestones
+- `edit-team-here.js` — Director, students, alumni, and past visitors
+- `edit-publications-here.js` — Publications and publication links
+- `site-settings.js` — Shared lab name, contact details, and external links
 
 Global colors and the maximum content width are defined in `design-config.js`.
+
+### Adding news
+
+Open `content/edit-news-here.js` and add an item inside the `items` list:
+
+```js
+{
+  date: "2026-08-08",
+  text: "The news announcement goes here."
+},
+```
+
+Use a `YYYY-MM-DD` date. The homepage and News page sort the entries automatically,
+so the new item does not have to be inserted in an exact position.
 
 When adding images:
 
 - Team photos go in `assets/images/team/`
 - Gallery photos go in `assets/images/gallery/`
+- Research-area card images go in `assets/images/research/`
 - Brand assets go in `assets/images/brand/`
 - Use lowercase, descriptive, hyphenated filenames
 - Compress large images before committing them

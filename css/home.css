@@ -1,4 +1,19 @@
 /* Rounded home-page cards, following the visual structure of the WiNES Lab site. */
+.nav {
+  background: var(--primary);
+  color: #fff;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+  border-color: #fff;
+}
+
+.nav-toggle {
+  color: var(--dark);
+}
+
 .hero {
   margin: 32px auto 0;
   padding: 0 28px;
@@ -6,17 +21,99 @@
 }
 
 .hero-grid {
+  display: block;
   max-width: calc(var(--width) - 56px);
-  padding: 58px;
+  padding: 52px;
   background: linear-gradient(135deg, var(--pale), #fff);
   border: 1px solid var(--border);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 37, 99, .06);
 }
 
+.hero-logo {
+  margin-bottom: 28px;
+}
+
 .hero h1 {
+  margin-bottom: 0;
   font-size: clamp(32px, 3.4vw, 40px);
   white-space: nowrap;
+}
+
+.hero-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 1fr);
+  gap: 52px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.hero-copy .lead {
+  margin-top: 0;
+}
+
+.hero-news {
+  padding-left: 30px;
+  border-left: 3px solid var(--primary);
+}
+
+.hero-news h2 {
+  margin: 0 0 18px;
+  color: var(--dark);
+  font-size: 23px;
+}
+
+.hero-news-list article {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.hero-news-list article:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.hero-news-list time {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero-news-list p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.hero-news .acceptance-rate {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 2px 8px;
+  border-radius: 2px;
+  background: #f4f7fb;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hero-news-more {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  margin-top: 14px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hero-news-more:hover,
+.hero-news-more:focus-visible {
+  color: var(--dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .affiliation {
@@ -36,17 +133,109 @@
 }
 
 .areas article {
-  min-height: 205px;
+  position: relative;
+  height: 275px;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 16px;
   background: #fff;
-  transition: transform .2s, box-shadow .2s, border-color .2s;
+  isolation: isolate;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
 }
 
-.areas article:hover {
+.areas article:hover,
+.areas article:focus-visible {
   transform: translateY(-3px);
   border-color: var(--primary);
   box-shadow: 0 10px 24px rgba(0, 37, 99, .08);
+  outline: none;
+}
+
+.research-card-preview,
+.research-card-details {
+  position: absolute;
+  inset: 0;
+  transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.research-card-preview {
+  z-index: 2;
+  background: var(--dark);
+}
+
+.research-card-preview::after {
+  position: absolute;
+  inset: 28% 0 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 24, 68, .9));
+  content: "";
+}
+
+.research-card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.research-card-title {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  left: 24px;
+  z-index: 1;
+  color: #fff;
+}
+
+.areas .research-card-title h3 {
+  display: flex;
+  align-items: flex-end;
+  min-height: 55px;
+  margin: 0;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.research-card-title span {
+  display: block;
+  margin-top: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  opacity: .8;
+  text-transform: uppercase;
+}
+
+.research-card-details {
+  display: flex;
+  align-items: flex-start;
+  padding: 30px;
+  background: linear-gradient(145deg, var(--primary), var(--dark));
+  transform: translateY(100%);
+}
+
+.areas .research-card-details p {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.research-card:hover .research-card-preview,
+.research-card:focus-visible .research-card-preview {
+  transform: translateY(-100%);
+}
+
+.research-card:hover .research-card-details,
+.research-card:focus-visible .research-card-details {
+  transform: translateY(0);
+}
+
+.research-card:hover .research-card-preview img,
+.research-card:focus-visible .research-card-preview img {
+  transform: scale(1.05);
 }
 
 .contact {
@@ -55,7 +244,9 @@
   border-radius: 16px;
 }
 
-.btn { border-radius: 10px; }
+.btn {
+  border-radius: 10px;
+}
 
 .gallery-section {
   margin: 0 0 72px;
@@ -76,9 +267,11 @@
 }
 
 .gallery-track {
+  --gallery-shift: 0px;
+  --gallery-duration: 36s;
   display: flex;
   width: max-content;
-  animation: gallery-scroll 36s linear infinite;
+  animation: gallery-scroll var(--gallery-duration) linear infinite;
   will-change: transform;
 }
 
@@ -102,14 +295,43 @@
 }
 
 @keyframes gallery-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-1 * var(--gallery-shift)));
+  }
 }
 
 @media (max-width: 850px) {
-  .hero { padding: 0 28px; }
-  .hero-grid { padding: 42px 32px; }
-  .hero h1 { white-space: normal; }
+  .nav-links {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .hero {
+    padding: 0 28px;
+  }
+
+  .hero-grid {
+    padding: 42px 32px;
+  }
+
+  .hero h1 {
+    white-space: normal;
+  }
+
+  .hero-columns {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .hero-news {
+    padding: 26px 0 0;
+    border-top: 3px solid var(--primary);
+    border-left: 0;
+  }
 }
 
 @media (max-width: 560px) {
@@ -125,10 +347,18 @@
 
   .affiliation,
   .areas article,
-  .contact { border-radius: 14px; }
+  .contact {
+    border-radius: 14px;
+  }
 
-  .gallery-section h2 { font-size: 32px; }
-  .gallery-window { border-radius: 14px; }
+  .gallery-section h2 {
+    font-size: 32px;
+  }
+
+  .gallery-window {
+    border-radius: 14px;
+  }
+
   .gallery-set img {
     width: 220px;
     height: 160px;
@@ -136,5 +366,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gallery-track { animation-play-state: paused; }
+  .research-card,
+  .research-card-preview,
+  .research-card-details,
+  .research-card-preview img {
+    transition-duration: .01ms;
+  }
+
+  .gallery-track {
+    animation-play-state: paused;
+  }
 }

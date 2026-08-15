@@ -1,0 +1,40 @@
+.publication-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.publication-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 13px;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  background: var(--primary);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.publication-button:hover,
+.publication-button:focus-visible {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: white;
+}
+
+.publication-button.secondary {
+  background: white;
+  color: var(--primary);
+}
+
+.publication-button.secondary:hover,
+.publication-button.secondary:focus-visible {
+  background: var(--pale);
+  border-color: var(--primary);
+  color: var(--dark);
+}
