@@ -27,6 +27,8 @@ This repository contains a dependency-free static website hosted with GitHub Pag
 │   └── index.html
 ├── content.js
 ├── design-config.js
+├── robots.txt
+├── sitemap.xml
 ├── css/
 │   ├── main.css
 │   └── home.css
@@ -69,6 +71,21 @@ When adding images:
 - Brand assets go in `assets/images/brand/`
 - Use lowercase, descriptive, hyphenated filenames
 - Compress large images before committing them
+
+## Search engine optimization
+
+The site includes basic search engine metadata and discovery files:
+
+- Page-specific titles and descriptions
+- Canonical URLs
+- Open Graph metadata for link previews
+- Schema.org JSON-LD structured data
+- `robots.txt` with a reference to the sitemap
+- `sitemap.xml` listing the public pages
+
+When adding, removing, or renaming a public page, update `sitemap.xml` and use the page's actual modification date in its `<lastmod>` value. Keep the Google Search Console verification meta tag in the home page unless site ownership is verified through another method.
+
+Do not commit account credentials, personal access tokens, API keys, private keys, Search Console exports, or other private account data. Site verification metadata is public by design, but its specific value does not need to be documented in this README.
 
 ## Publishing updates
 
