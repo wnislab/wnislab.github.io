@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wnislab.github.io/sitemap.xml
