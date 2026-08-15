@@ -9,7 +9,7 @@ window.WNIS_CONTENT.team = {
     role: "Lab Director · Assistant Professor",
     email: "nan.cen@slu.edu",
     photo: "assets/images/profile/nan-cen.jpg",
-    url: "https://sites.google.com/view/nancen/home?authuser=0",
+    url: "https://wnislab.github.io/NanCenPersonalWeb/",
     bio: "Dr. Cen directs the WNIS Lab, with research interests in modeling, control, and system design for next-generation intelligent wireless networks."
   },
   students: [{
@@ -17,21 +17,21 @@ window.WNIS_CONTENT.team = {
     role: "Ph.D. Candidate",
     email: "peijun.hou@slu.edu",
     photo: "assets/images/team/peijun-hou.jpg",
-    url: "https://sites.google.com/view/peijunhou/home",
+    url: "https://wnislab.github.io/PeijunPersonalWeb/",
     interests: "Intelligent network control, hybrid LiFi/WiFi systems, and digital twins."
   }, {
     name: "Yue Zhang",
     role: "Ph.D. Candidate",
     email: "yue.zhang.5@slu.edu",
     photo: "assets/images/team/yue-zhang.webp",
-    url: "https://www.yzn95.com/",
+    url: "https://wnislab.github.io/YueZhangPersonalWeb/",
     interests: "Optical wireless communication and sensing, security, and UAV networking."
   }, {
     name: "Yi Wei",
     role: "Ph.D. Student",
     email: "yi.wei.1@slu.edu",
     photo: "assets/images/team/yi-wei.jpg",
-    url: "",
+    url: "https://wnislab.github.io/YiWeiPersonalWeb/",
     interests: "Wireless networks and intelligent systems."
   }],
   alumni: [{
