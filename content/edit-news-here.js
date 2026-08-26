@@ -1,6 +1,7 @@
 /* ADD NEW LAB NEWS HERE.
  * Use YYYY-MM-DD dates. The website sorts entries newest-first automatically.
- * Optional fields: acceptanceRate, url, and linkLabel.
+ * Optional fields: acceptanceRate, url, linkLabel, details, and images.
+ * details may be a string or a list of paragraphs. Images appear only on the News page.
  */
 window.WNIS_CONTENT = window.WNIS_CONTENT || {};
 

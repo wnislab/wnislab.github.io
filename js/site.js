@@ -12,6 +12,9 @@
     '--width': d.contentWidth
   }).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
   const c = window.WNIS_CONTENT;
+  const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[character]);
   const externalLinkIcon = `
     <svg class="external-link-icon"
          viewBox="0 0 16 16"
@@ -88,6 +91,37 @@
       return result;
     }, {});
 
+    const newsDetails = item => {
+      const details = Array.isArray(item.details)
+        ? item.details
+        : item.details ? String(item.details).split(/\n\s*\n/).filter(Boolean) : [];
+      const images = Array.isArray(item.images) ? item.images.filter(image => image?.photo) : [];
+      if (!details.length && !images.length) return '';
+      const detailId = `news-details-${item.date}-${sortedNews.indexOf(item)}`;
+      return `
+        <button class="news-details-toggle" type="button" aria-expanded="false" aria-controls="${detailId}">
+          <span>More details</span><span aria-hidden="true">›</span>
+        </button>
+        <div class="news-details" id="${detailId}" hidden>
+          ${details.map(paragraph => `<p>${escapeHtml(paragraph)}</p>`).join('')}
+          ${images.length ? `
+            <div class="news-gallery" data-news-gallery>
+              <button class="news-gallery-control previous" type="button" data-news-gallery-previous aria-label="Previous photo">‹</button>
+              <div class="news-gallery-track" tabindex="0">
+                ${images.map(image => `
+                  <figure>
+                    <img src="../${escapeHtml(image.photo)}" alt="${escapeHtml(image.alt)}" loading="lazy">
+                    ${image.caption ? `<figcaption>${escapeHtml(image.caption)}</figcaption>` : ''}
+                  </figure>
+                `).join('')}
+              </div>
+              <button class="news-gallery-control next" type="button" data-news-gallery-next aria-label="Next photo">›</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    };
+
     const newsItem = item => `
       <article class="news-item">
         <time datetime="${item.date}">${formatNewsDate(item.date)}</time>
@@ -97,6 +131,7 @@
             ${item.acceptanceRate ? `<span class="acceptance-rate">Acceptance rate: ${item.acceptanceRate}</span>` : ''}
           </p>
           ${item.url ? `<a class="news-link" href="${item.url}" target="_blank" rel="noreferrer">${item.linkLabel || 'Read more'} ${externalLinkIcon}</a>` : ''}
+          ${newsDetails(item)}
         </div>
       </article>
     `;
@@ -110,6 +145,24 @@
         </section>
       `)
       .join('');
+
+    newsArchive.addEventListener('click', event => {
+      const toggle = event.target.closest('.news-details-toggle');
+      if (toggle) {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        const details = document.getElementById(toggle.getAttribute('aria-controls'));
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.querySelector('span:first-child').textContent = expanded ? 'More details' : 'Hide details';
+        details.hidden = expanded;
+        return;
+      }
+
+      const control = event.target.closest('[data-news-gallery-previous], [data-news-gallery-next]');
+      if (!control) return;
+      const track = control.closest('[data-news-gallery]').querySelector('.news-gallery-track');
+      const direction = control.hasAttribute('data-news-gallery-previous') ? -1 : 1;
+      track.scrollBy({ left: direction * Math.max(track.clientWidth * .82, 260), behavior: 'smooth' });
+    });
   }
 
   const galleryWindow = document.querySelector('.gallery-window');

@@ -83,17 +83,26 @@ Open `content/edit-news-here.js` and add an item inside the `items` list:
 ```js
 {
   date: "2026-08-08",
-  text: "The news announcement goes here."
+  text: "The short announcement shown on both the Home and News pages.",
+  details: "Optional longer information shown after a reader selects More details.",
+  images: [{
+    photo: "assets/images/news/example-event.jpg",
+    alt: "Lab members presenting a demonstration at the event",
+    caption: "An optional caption."
+  }]
 },
 ```
 
 Use a `YYYY-MM-DD` date. The homepage and News page sort the entries automatically,
 so the new item does not have to be inserted in an exact position.
+The Home page uses only the short `text`. Optional `details` and `images` appear in an
+expandable area on the News page. Multiple images form a horizontally scrollable gallery.
 
 When adding images:
 
 - Team photos go in `assets/images/team/`
 - Gallery photos go in `assets/images/gallery/`
+- News photos go in `assets/images/news/`
 - Research-area card images go in `assets/images/research/`
 - Brand assets go in `assets/images/brand/`
 - Use lowercase, descriptive, hyphenated filenames

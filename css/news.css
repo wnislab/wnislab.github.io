@@ -82,6 +82,104 @@
   text-underline-offset: 4px;
 }
 
+.news-details-toggle {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 10px 0 0 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.news-details-toggle span:last-child {
+  font-size: 20px;
+  line-height: 12px;
+  transition: transform .2s ease;
+}
+
+.news-details-toggle[aria-expanded="true"] span:last-child {
+  transform: rotate(90deg);
+}
+
+.news-details-toggle:hover,
+.news-details-toggle:focus-visible {
+  color: var(--dark);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.news-details {
+  margin-top: 18px;
+  padding: 20px;
+  border-left: 3px solid var(--primary);
+  background: #f7f9fc;
+}
+
+.news-details > p + p {
+  margin-top: 12px;
+}
+
+.news-gallery {
+  position: relative;
+  margin-top: 18px;
+}
+
+.news-gallery-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  padding: 0 0 10px;
+}
+
+.news-gallery figure {
+  flex: 0 0 min(78%, 560px);
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.news-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 3px;
+  object-fit: cover;
+}
+
+.news-gallery figcaption {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.news-gallery-control {
+  position: absolute;
+  z-index: 1;
+  top: calc(50% - 24px);
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: 50%;
+  background: rgba(14, 42, 73, .86);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.news-gallery-control.previous { left: 10px; }
+.news-gallery-control.next { right: 10px; }
+.news-gallery-control:hover,
+.news-gallery-control:focus-visible { background: var(--primary); }
+
 @media (max-width: 850px) {
   .nav-links {
     background: var(--primary);
@@ -106,5 +204,17 @@
 
   .news-link {
     margin-left: 0;
+  }
+
+  .news-details-toggle {
+    margin-left: 0;
+  }
+
+  .news-details {
+    padding: 16px;
+  }
+
+  .news-gallery figure {
+    flex-basis: 90%;
   }
 }
