@@ -106,7 +106,7 @@ window.WNIS_CONTENT.news = {
     },
     {
       "date": "2026-08-25",
-      "text": "WNIS Lab Visits Hybar to Explore Future Learning Factory Opportunities.",
+      "text": "WNIS Lab Visits Hybar to Explore Future Learning Factory Opportunities!",
       "details": "Members of the Wireless Networks and Intelligent Systems (WNIS) Lab at Saint Louis University recently visited Hybar to learn more about its advanced manufacturing environment and industrial operations. During the visit, the team explored opportunities for future learning factory research, including intelligent sensing, industrial data analytics, AI-enabled manufacturing, and predictive maintenance.",
       "images": [
         {
